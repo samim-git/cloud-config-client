@@ -1,0 +1,24 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: config-client
+  profiles:
+    active: default, rtas
+  config:
+    import: optional:configserver:http://localhost:8888
+#datasource:
+#  username: sss
+#  password: paswrd
+local:
+  db-pass: ${datasource.password}
+  db-user: ${datasource.username}
+rtas:
+  db-pass: ${rtas.database.password}
+  db-user: ${rtas.database.username}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
